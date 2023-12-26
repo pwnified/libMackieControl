@@ -11,7 +11,7 @@
 
 #pragma once
 
-#include <JuceHeader.h>
+#import "MidiMessage.h"
 
 namespace mackieControl {
 	/**
@@ -167,7 +167,7 @@ namespace mackieControl {
 		/**
 		 * Create a Mackie Control message from a MIDI message.
 		 */
-		explicit Message(const juce::MidiMessage& midiMessage);
+		explicit Message(const MidiMessage& midiMessage);
 
 		/**
 		 * Create a copy of another message.
@@ -190,11 +190,11 @@ namespace mackieControl {
 		/**
 		 * Copy this message from a MIDI message.
 		 */
-		Message& operator=(const juce::MidiMessage& message);
+		Message& operator=(const MidiMessage& message);
 		/**
 		 * Convert this message to MIDI message.
 		 */
-		juce::MidiMessage toMidi() const;
+		MidiMessage toMidi() const;
 
 		/**
 		 * Check if this message is a valid Mackie Control message via MIDI system exclusive message.
@@ -317,11 +317,11 @@ namespace mackieControl {
 		/**
 		 * Convert MIDI message to Mackie Control message.
 		 */
-		static Message fromMidi(const juce::MidiMessage& message);
+		static Message fromMidi(const MidiMessage& message);
 		/**
 		 * Convert Mackie Control message to MIDI message.
 		 */
-		static juce::MidiMessage toMidi(const Message& message);
+		static MidiMessage toMidi(const Message& message);
 
 		/**
 		 * Create a Device Query message.
@@ -516,8 +516,8 @@ namespace mackieControl {
 		static std::tuple<WheelType, int> convertJogWheelValue(int value);
 
 	private:
-		juce::MidiMessage message;
+		MidiMessage message;
 
-		JUCE_LEAK_DETECTOR(Message)
+		//JUCE_LEAK_DETECTOR(Message)
 	};
 }
